@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Serialize, Deserialize, Hash, Eq, PartialEq)]
+#[serde(rename_all = "camelCase")]
 pub enum ExchangeName {
     Binance,
     HitBtc,
@@ -15,7 +16,7 @@ pub enum ExchangeName {
 #[derive(Deserialize, Serialize, Debug)]
 pub struct CreateAccountDto {
     pub uid: String,
-    pub _exchange: ExchangeName,
+    pub exchange: ExchangeName,
     pub api_key: String,
     pub sign_key: Option<String>,
 }
@@ -23,14 +24,14 @@ pub struct CreateAccountDto {
 #[derive(Deserialize, Serialize, Debug)]
 pub struct SignAndGetDto {
     pub uid: String,
-    pub _exchange: ExchangeName,
+    pub exchange: ExchangeName,
     pub data_to_sign: Vec<u8>,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct UpdateAccountDto {
     pub uid: String,
-    pub _exchange: ExchangeName,
+    pub exchange: ExchangeName,
     pub api_key: Option<String>,
     pub sign_key: Option<String>,
 }
@@ -38,6 +39,6 @@ pub struct UpdateAccountDto {
 #[derive(Deserialize, Serialize, Debug)]
 pub struct GetApiKeyDto {
     pub uid: String,
-    pub _exchange: ExchangeName,
+    pub exchange: ExchangeName,
 }
 

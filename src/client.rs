@@ -22,7 +22,7 @@ impl ClientApiAccount {
 
     pub async fn sign_get(&self, sign_and_get_dto: &SignAndGetDto) -> Result<String, reqwest::Error> {
         self.client
-            .get("http://localhost:3030/account")
+            .put("http://localhost:3030/account")
             .json(sign_and_get_dto)
             .send()
             .await?
@@ -60,7 +60,7 @@ impl ClientApiAccount {
 
     pub async fn get_api_key(&self, get_api_key_dto: &GetApiKeyDto) -> Result<String, reqwest::Error> {
         self.client
-            .get("http://localhost:3030/key/account")
+            .put("http://localhost:3030/key/account")
             .json(get_api_key_dto)
             .send()
             .await?
